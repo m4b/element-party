@@ -1,0 +1,95 @@
+<dom-module id="element-party">
+  <style>
+
+   :host {
+     @apply(--layout-fit);
+   }
+
+   iron-pages {
+   }
+
+   paper-tabs {
+     width: 50%;
+   }
+
+   neon-animated-pages {
+     position: static;
+   }
+
+   welcome-page, advertisement-page {
+     height: auto;
+   }
+
+   welcome-page, doc-page, advertisement-page {
+     padding: 16px; /* for ui elements */
+   }
+
+   @media (max-width: 600px) {
+     paper-tabs {
+       width: 100%;
+     }
+   }
+   
+  </style>
+  <template>
+    <paper-header-panel mode="standard">
+      <paper-toolbar>
+        <paper-tabs selected="{{_selected}}"> <!--  class="flex"> -->
+          <template is="dom-repeat" items="[[_titles]]">
+            <paper-tab>[[item.tab]]</paper-tab>
+          </template>
+        </paper-tabs>
+      </paper-toolbar>
+      <neon-animated-pages selected="[[_selected]]">
+        <welcome-page id="welcome" class="fit"></welcome-page>
+        <doc-page id="doc"></doc-page>
+        <advertisement-page id="ad" class="fit"></advertisement-page>        
+      </neon-animated-pages>
+    </paper-header-panel>
+  </template>
+  <script>
+   Polymer({
+     is: 'element-party',
+
+     properties: {
+       
+       _selected:{
+         type: Number,
+         value: 0,
+         notify: true
+       },
+
+       _titles: {
+         type: Array,
+         value: function(){
+           return [
+             {title: 'Welcome!', tab: 'Welcome!'},
+             {title: 'Element Usage Documentation', tab: 'Usage'},
+             {title: 'Brought to You By:', tab: 'Advertisements'}
+           ];
+         }
+       },
+
+       _title: {
+         type: String,
+         notify: true,
+         computed: '_computeTitle(_selected, _titles)'
+       }
+     },
+
+     _computeTitle: function(selected, titles){
+       return titles[selected].title;
+     },
+
+     
+     ready: function(){
+
+       console.log('element-party ready', this._selected, this._titles, this._title);
+       
+     }
+     
+   });
+
+  </script>
+
+</dom-module>

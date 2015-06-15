@@ -1,0 +1,86 @@
+<dom-module id="doc-page">
+  <style>
+   paper-material {
+     padding: 16px;
+   }
+   
+   iron-image{
+     display: block;
+     text-align: center;
+   }
+   
+  </style>
+  <template>
+    <paper-material elevation="1">
+      <h1 id="header">How to Party with my Elements</h1>
+      <hr>
+      <!-- "![party on, dude](../images/bill-and-ted.jpg)       -->
+      <iron-image id="billandted" src="../../images/bill-and-ted.jpg" style="width: auto; height: 300px;" sizing="contain"></iron-image>
+      <div style="margin-top: 16px;"></div>
+      <marked-element id="body">
+        <script type="text/markdown">
+         You can import **all** the latest polymer elements easily into your jsbin (or otherwise) by simply doing:
+
+         ````html
+         <base href="http://element-party.xyz/">
+         <link rel="import" href="all-elements.html">
+         ````
+         and you'll be ready to party.
+
+         Alternatively (if speed slightly more important), you can reference them by specific groups, i.e.:
+
+         * `<link rel="import" href="iron-elements.html">`
+         * `<link rel="import" href="paper-elements.html">`
+         * `<link rel="import" href="gold-elements.html">`
+         * `<link rel="import" href="platinum-elements.html">`
+         * `<link rel="import" href="neon-elements.html">`
+         * `<link rel="import" href="google-elements.html">`
+
+         You can also access any of the elements individually by doing:
+
+         ````html
+          <link rel="import" href="bower_components/<desired-element>/<desired-element>.html">
+         ````
+
+         *Remember*: don't forget to either use the `<base>` tag *or* prepend `http://element-party.xyz/` to your hrefs.
+
+         Lastly, and as always, **be excellent to each other**.
+        </script>
+      </marked-element>
+    </paper-material>
+
+  </template>
+  <script>
+   Polymer({
+     is: 'doc-page',
+
+     behaviors: [
+       Polymer.NeonAnimationRunnerBehavior
+     ],
+     
+     properties: {
+
+       animationConfig: {
+         value: function(){
+           var nodes = [this.$.billandted, this.$.header];
+           return {
+             'entry':
+             [
+               {name: 'fade-in-animation', node: this },
+               {name: 'cascaded-animation', animation: 'scale-up-animation', nodes: nodes, timing: {delay: 75}},
+               {name: 'slide-from-right-animation', node: this.$.header, timing: {delay: 150}}
+             ],
+             'exit':
+             [
+               {name: 'fade-out-animation', node: this, timing: {delay: 75} },
+               {name: 'cascaded-animation', animation: 'scale-down-animation', nodes: nodes}
+             ]
+           };
+         }
+       }
+     }
+   });
+
+  </script>
+
+</dom-module>

@@ -1,0 +1,81 @@
+<dom-module id="welcome-page">
+  <style>
+
+   :host {
+     height: 100%;
+   }
+   
+   neon-animated-pages {
+     position: static; /* thanks to @helen for this trick + @apply(--layout-fit) on UI elements inside of neon-animated-pages */
+   }
+   
+  </style>
+  <template>
+    <neon-animated-pages selected="[[_party]]">
+      <polymer-question id="question" party="{{_party}}"></polymer-question>
+      <party-time id="youtube" party="{{_party}}"></party-time>
+    </neon-animated-pages>
+  </template>
+  <script>
+   Polymer({
+     is: 'welcome-page',
+
+     behaviors: [
+       Polymer.NeonAnimationRunnerBehavior
+     ],
+     
+     properties: {
+
+       animationConfig: {
+         type: Object,
+         computed: '_computeAnimationConfig(_party)', /* this was hard to figure out to use a computed property, and even whether that's 'allowed' */
+       },
+       
+       _party:{
+         type: Number,
+         value: 0,
+         notify: true,
+         observer: '_partyChanged'
+       },
+     },
+
+     observers: [
+       '_partyChanged(_party, animationConfig)'
+     ],
+
+     _partyIsOver: function(){
+       this._party = 0;
+     },
+
+     _computeAnimationConfig(selected){
+       var animatable = this.$.question;       
+       if (selected === 1){
+         animatable = this.$.youtube;
+       }
+       return {
+         'entry':
+         [
+           {name: 'fade-in-animation', node: this },
+           {animatable: animatable, type: 'entry'}
+         ],
+         'exit':
+         [
+           {name: 'fade-out-animation', node: this },
+           {animatable: animatable, type: 'exit'}               
+         ]
+       };
+
+     },
+
+     _partyChanged(party, animationConfig){
+       if (party === 1){
+         /* party time */
+         this.$.youtube.partyTime();
+       }
+     }
+     
+   });
+
+  </script>
+
+</dom-module>
