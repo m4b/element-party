@@ -47,7 +47,7 @@
        this._party = 0;
      },
 
-     _computeAnimationConfig(selected){
+     _computeAnimationConfig: function(selected){
        var animatable = this.$.question;       
        if (selected === 1){
          animatable = this.$.youtube;
@@ -67,7 +67,7 @@
 
      },
 
-     _partyChanged(party, animationConfig){
+     _partyChanged: function(party, animationConfig){
        if (party === 1){
          /* party time */
          this.$.youtube.partyTime();

@@ -81,17 +81,17 @@
 
      },
 
-     partyTime(){
+     partyTime: function(){
        this.playAnimation('entry');
        this.$.youtube.play();
      },
 
-     partyOver(){
+     partyOver: function(){
        this.playAnimation('exit');
        this.$.youtube.pause();
      },
      
-     _partyIsOver(){
+     _partyIsOver: function(){
        this.party = 0;
        this.partyOver();
      }
