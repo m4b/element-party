@@ -18,11 +18,10 @@
   </style>
   <template>
     <paper-material elevation="3" class="fit">
-      <iron-image class="moneybag" src="../../images/moneybag.png" style="width: 16px; height: 16px;" sizing="contain"></iron-image>
+      <iron-image class="cascade" src="../../images/moneybag.png" style="width: 16px; height: 16px;" sizing="contain"></iron-image>
       <template is="dom-repeat" items="[[_cascadeItems]]">
         <span class="cascade">[[item]]</span>
       </template>
-      <iron-image class="moneybag" src="../../images/moneybag.png" style="width: 16px; height: 16px;" sizing="contain"></iron-image>      
       <hr>
       <ad-wrapper id="ad"></ad-wrapper>
     </paper-material>
@@ -76,8 +75,7 @@
 
      attached: function(){
        this.async(function(){
-         var moneybags = Polymer.dom(this.root).querySelectorAll('.moneybag');         
-         var nodes = moneybags.concat(Polymer.dom(this.root).querySelectorAll('.cascade'));
+          var nodes = Polymer.dom(this.root).querySelectorAll('.cascade');
          this.animationConfig.entry[1].nodes = nodes;
          this.animationConfig.exit[1].nodes = nodes;
        },0);
