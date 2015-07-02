@@ -1,27 +1,26 @@
 <dom-module id="ad-wrapper">
   <style>
 
+   :host {
+     font-weight: 100;
+   }
+   
    div {
      height: 90%; /* setting this to 90% cause can't seem to get the content to fit... */
      width: 100%;
    }
 
+   iron-image{
+     display: block;
+     text-align: center;
+     margin-top: 16px;
+   }
 
   </style>
   <template>    
     <div align="center">
-      <!-- responsive add errors out if not first item in neon-animated-pages ... :( -->
-
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-      <ins id="ins" class="adsbygoogle"
-           style="display:inline-block;width:300px;height:250px"
-           data-ad-client="ca-pub-9925995830009670"
-           data-ad-slot="2000989545"></ins>
-      <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-
+      <span>An Advertisement would have appeared here, but AdSense denied my application because my website isn't "sweet enough" (technical term).  Instead, here's a picture of a cat that's giving the look of disapproval ಠ_ಠ</span>
+      <iron-image src="../../images/cat_disappointed.jpg" style="width: auto; height: 300px;" sizing="contain"></iron-image>
     </div>
   </template>
   <script>
