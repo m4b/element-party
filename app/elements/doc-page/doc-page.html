@@ -21,7 +21,6 @@
       <marked-element id="body">
         <script type="text/markdown">
          You can import *all* the latest polymer elements easily into your jsbin (or otherwise) by simply doing:
-
          ````html
          <base href="http://element-party.xyz/">
          <script src="bower_components/webcomponentsjs/webcomponents-lite.js">< /script>
@@ -45,10 +44,48 @@
          ````
 
          **Remember**: don't forget to either use the `<base>` tag *or* prepend `http://element-party.xyz/` to your hrefs.
-
          Lastly, and as always, **be excellent to each other**.
         </script>
       </marked-element>
+      <paper-button  on-tap="_expand">
+        <iron-icon icon="[[_expandIcon]]"></iron-icon>
+        <span>Example</span>
+      </paper-button>
+      <iron-collapse id="collapse">
+        <div>
+        <marked-element>
+          <script type="text/markdown">
+           ````html
+            <html>
+              <head>
+                <base href="http://element-party.xyz/">
+                <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></ script>
+                <link rel="import" href="all-elements.html">
+              </head>
+              <body>
+                <rename-me></rename-me>
+                <dom-module id="rename-me">
+                  <style>
+                  </style>
+                  <template>
+                    <paper-button>
+                      Touch Me
+                    </paper-button>
+                  </template>
+                  <script>
+                   Polymer ({
+                     is: 'rename-me'
+                   });
+                  </ script>
+                </dom-module>
+              </body>
+            </html>
+           ````
+          </script>
+        </marked-element>
+        </div>
+      </iron-collapse>
+
     </paper-material>
 
   </template>
@@ -62,6 +99,11 @@
      
      properties: {
 
+       _expandIcon: {
+         type: String,
+         value: "expand-more"
+       },
+       
        animationConfig: {
          value: function(){
            var nodes = [this.$.billandted, this.$.header];
@@ -80,9 +122,13 @@
            };
          }
        }
+     },
+
+     _expand: function(e){
+       console.log("opened: ", this.$.collapse.opened);
+       this.$.collapse.toggle();
+       this._expandIcon = this.$.collapse.opened ? "expand-less" : "expand-more";
      }
    });
-
   </script>
-
 </dom-module>
