@@ -20,6 +20,8 @@
       <div style="margin-top: 16px;"></div>
       <marked-element id="body">
         <script type="text/markdown">
+         **UPDATE** Now with cronjobs, to stay on the bleeding edge! Every day, `bower install` is run to create a fresh batch of components, so you can stay up to date, and fashionable, at the same time.
+
          You can import *all* the latest polymer elements easily into your jsbin (or otherwise) by simply doing:
          ````html
          <base href="http://element-party.xyz/">
@@ -27,26 +29,9 @@
          <link rel="import" href="all-elements.html">
          ````
          and you'll be ready to party.
-
-         Alternatively (if speed slightly more important), you can reference them by specific groups, i.e.:
-
-         * `<link rel="import" href="iron-elements.html">`
-         * `<link rel="import" href="paper-elements.html">`
-         * `<link rel="import" href="gold-elements.html">`
-         * `<link rel="import" href="platinum-elements.html">`
-         * `<link rel="import" href="neon-elements.html">`
-         * `<link rel="import" href="google-elements.html">`
-
-         You can also access any of the elements individually by doing:
-
-         ````html
-          <link rel="import" href="bower_components/<desired-element>/<desired-element>.html">
-         ````
-
-         **Remember**: don't forget to either use the `<base>` tag *or* prepend `http://element-party.xyz/` to your hrefs.
-         Lastly, and as always, **be excellent to each other**.
         </script>
       </marked-element>
+
       <paper-button  on-tap="_expand">
         <iron-icon icon="[[_expandIcon]]"></iron-icon>
         <span>Example</span>
@@ -86,6 +71,31 @@
         </marked-element>
         </div>
       </iron-collapse>
+
+      <marked-element id="body">
+        <script type="text/markdown">
+
+         Alternatively (if speed slightly more important), you can reference them by specific groups, i.e.:
+
+         * `<link rel="import" href="iron-elements.html">`
+         * `<link rel="import" href="paper-elements.html">`
+         * `<link rel="import" href="gold-elements.html">`
+         * `<link rel="import" href="platinum-elements.html">`
+         * `<link rel="import" href="neon-elements.html">`
+         * `<link rel="import" href="google-elements.html">`
+
+         But don't forget to import polymer too, as each of the individual element sets does not include the `polymer.html`.
+
+         You can also access any of the elements individually by doing:
+
+         ````html
+          <link rel="import" href="bower_components/<desired-element>/<desired-element>.html">
+         ````
+
+         **Remember**: don't forget to either use the `<base>` tag *or* prepend `http://element-party.xyz/` to your hrefs.
+         Lastly, and as always, **be excellent to each other**.
+        </script>
+      </marked-element>
 
     </paper-material>
 
