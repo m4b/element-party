@@ -52,8 +52,7 @@
        
        _selected:{
          type: Number,
-         value: 0,
-         notify: true
+         value: 0
        },
 
        _titles: {
@@ -69,7 +68,6 @@
 
        _title: {
          type: String,
-         notify: true,
          computed: '_computeTitle(_selected, _titles)'
        }
      },
