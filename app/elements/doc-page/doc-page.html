@@ -112,7 +112,7 @@
 
        _expandIcon: {
          type: String,
-         value: "expand-more"
+         value: 'expand-more'
        },
        
        animationConfig: {
@@ -135,10 +135,9 @@
        }
      },
 
-     _expand: function(e){
-       console.log("opened: ", this.$.collapse.opened);
+     _expand: function(){
        this.$.collapse.toggle();
-       this._expandIcon = this.$.collapse.opened ? "expand-less" : "expand-more";
+       this._expandIcon = this.$.collapse.opened ? 'expand-less' : 'expand-more';
      }
    });
   </script>

@@ -1,12 +1,11 @@
 {
     "name": "element-party",
+    "description", "For those times you just need to party",
     "version": "1.0.0",
     "dependencies": {
 	"iron-elements": "PolymerElements/iron-elements#latest",
 	"paper-elements": "PolymerElements/paper-elements#latest",
 	"neon-elements": "PolymerElements/neon-elements#latest",
-	"gold-elements": "PolymerElements/gold-elements#latest",
-	"platinum-elements": "PolymerElements/platinum-elements#latest",
 	"google-web-components": "GoogleWebComponents/google-web-components#latest"
     }
 }
